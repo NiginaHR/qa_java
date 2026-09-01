@@ -1,11 +1,21 @@
 package com.example;
 
 import org.junit.jupiter.api.Test;
+
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
- class TestAnimalFood {
+class TestAnimalFamily {
+    @Test
+
+    public void showGetAnimalFamily()  {
+
+        Animal animal = new Animal();
+
+        assertEquals("Существует несколько семейств: заячьи, беличьи, мышиные, кошачьи, псовые, медвежьи, куньи", animal.getFamily());
+    }
 
     @Test
     public void testPredator() throws Exception {
@@ -29,3 +39,4 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
         });
     }
 }
+

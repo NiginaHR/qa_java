@@ -29,7 +29,13 @@ import static org.mockito.Mockito.*;
     }
 
 
+    @Test
 
+    public void showGetSound(){
+
+        Cat cat = new Cat(feline);
+
+        assertEquals("Мяу", cat.getSound());
+    }
 }
-
 
