@@ -16,13 +16,13 @@ import static org.mockito.Mockito.times;
 
 @RunWith(Parameterized.class)
 
-public class TestLionSex {
+public class TestLion {
     private final String sex;
 
     private final boolean expected;
 
 
-    public TestLionSex(String sex, boolean expected) {
+    public TestLion(String sex, boolean expected) {
         this.sex = sex;
         this.expected = expected;
     }

@@ -1,14 +1,47 @@
 package com.example;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 
-class TestAnimalFamily {
+@RunWith(Parameterized.class)
+
+public class TestAnimal {
+
+    private final String animalKind;
+    private final  List <String> expectedFood;
+
+    public TestAnimal(String animalKind,  List <String> expectedFood) {
+        this.animalKind = animalKind;
+        this.expectedFood = expectedFood;
+
+    }
+
+    @Parameterized.Parameters
+
+    public static Object[][] getAnimalsFood() {
+        return new Object[][]{
+        {"Хищник", List.of("Животные", "Птицы", "Рыба")},
+        {"Травоядное", List.of("Трава", "Различные растения")}
+    };
+    }
+
     @Test
+
+    public void showGetAnimalsFood() throws Exception {
+
+        Animal animal=new Animal();
+        List <String> actual = animal.getFood(animalKind);
+       assertEquals(expectedFood, actual);
+
+    }
+
+        @Test
 
     public void showGetAnimalFamily()  {
 
@@ -17,19 +50,10 @@ class TestAnimalFamily {
         assertEquals("Существует несколько семейств: заячьи, беличьи, мышиные, кошачьи, псовые, медвежьи, куньи", animal.getFamily());
     }
 
-    @Test
-    public void testPredator() throws Exception {
-        Animal animal = new Animal();
-        List<String> food = animal.getFood("Хищник");
-        assertEquals(List.of("Животные", "Птицы", "Рыба"), food);
-    }
 
-    @Test
-    public void testHerbivore() throws Exception {
-        Animal animal = new Animal();
-        List<String> food = animal.getFood("Травоядное");
-        assertEquals(List.of("Трава", "Различные растения"), food);
-    }
+
+
+
 
     @Test
     public void testInvalid() {

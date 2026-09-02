@@ -12,7 +12,7 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 
- class TestCatFood {
+ class TestCat {
     @Mock
     private Feline feline;
     @Test

@@ -1,13 +1,51 @@
 package com.example;
-
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class TestFelineException {
+@RunWith(Parameterized.class)
+
+public class TestFeline {
+
+private final int kittensCount;
+
+ public  TestFeline(int kittensCount) {
+        this.kittensCount = kittensCount;
+    }
+
+    @Parameterized.Parameters
+    public static Object[][] getKittens() {
+        return new Object[][]{
+                {1},
+                {3},
+                {5}
+
+        };
+    }
+
+    @Test
+    public void getKittensCount()  {
+
+        Feline feline=new Feline();
+
+
+        int actualResult = feline.getKittens(kittensCount);
+        assertEquals(kittensCount, actualResult);
+
+
+    }
+
+    @Test
+    public void ShowGetKittens() {
+        Feline feline = new Feline();
+        assertEquals(1, feline.getKittens());
+    }
+
 
     @Test
     public void shouldThrowExceptionAnimalKind() {
@@ -36,22 +74,8 @@ class TestFelineException {
 
         assertEquals( List.of("Животные", "Птицы", "Рыба"), feline.eatMeat());
     }
-    @Test
-    void isKittensCountIs1()  {
-
-        Feline feline=new Feline();
 
 
-        int actualResult = feline.getKittens();
-        assertEquals(1, actualResult);
 
-
-    }
-    @Test
-    void isKittensCountIs3() {
-        Feline feline = new Feline();
-        int actualResult = feline.getKittens(3);
-        assertEquals(3, actualResult);
-    }
 }
 
